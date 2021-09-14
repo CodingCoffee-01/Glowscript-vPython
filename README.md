@@ -1,3 +1,25 @@
+###     This version is modified by Chiyang Lin   #####
+
+it is based on Glowscript3.1  (vPython) ,  modified for using one vPython file , 
+
+Major change is on function readSingleFile(evt) , and button declare 
+
+if want to change for your own vpython file , just need to change 
+
+ $.get('./Demos/AtomicSolid-VPython.py',{},function(content)
+ 
+change for your own code file name and put it into ./Demos 
+ 
+Then can use Github pages feature to demo your vPython program 
+
+
+這是根據 Glowscript 3.1 修改，
+
+主要是改成單一vPython file ， 而且可以用 Github Page 功能 demo 自己的vPython 程式
+
+demo links :   https://chiyanglin-astar.github.io/Glowscript-vPython/
+
+
 ### OBTAINING THE LATEST VERSION OF GLOWSCRIPT OFFLINE
 Based on the work of [Vesa Lappalainen](https://github.com/vesal) of Finland, this package makes it possible to write and run
 GlowScript programs even when disconnected from the internet. To obtain the latest version of this package,
