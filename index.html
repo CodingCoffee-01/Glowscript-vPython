@@ -57,8 +57,7 @@
 &nbsp;&nbsp;&nbsp;
 <button id="export" onclick="exportCode()">Export</button>
 &nbsp;&nbsp;&nbsp;
-<input type="file" id="read_local_file"/>
-
+<button id="read_local_file" onclick="readSingleFile()">Read_Code_file</button>
 <script>
 var gsversion = '3.1'
 var printpane = false
@@ -263,9 +262,9 @@ function gsErrorHandler(err) {
 
 function readSingleFile(evt) {
   console.log(" hello this is openfile name");
-  console.log(evt);
-  console.log(evt.target);
-	exporting = false
+  //console.log(evt);
+  //console.log(evt.target);
+  exporting = false
 	var ok = true
 	if (GSedit.changed()) {
 		var s = "To continue without saving, click OK.\nTo save, click Cancel, then click Save."
@@ -273,39 +272,15 @@ function readSingleFile(evt) {
 		else ok = false
 	}
 
-  //fetch('./Demos/AtomicSolid-VPython.py')
-  //.then(response => response.text())
-  //.then(text => console.log(text))
-  //console.log(" server local file ")
-
   $.get('./Demos/AtomicSolid-VPython.py',{},function(content){
         let lines=content.split('\n');
-
         console.log(`"./Demos/AtomicSolid-VPython.py" contains ${lines.length} lines`)
         console.log(`First line : ${lines[0]}`)
-
+  GSedit.setValue(content)
   });
 
-
-	if (ok) {
-		savecode = null
-	    $("#export").html('Export')
-	    var f, reader
-	    f = evt.target.files[0]
-      //f = text.target.files[0]
-	    if (f) {
-	        reader = new FileReader()
-	        reader.onload = function(e) {
-	        	var content = e.target.result
-	        	GSedit.setValue(content)
-            console.log(" hello world atom demo ");
-            //console.log(content);
-	        }
-	        reader.readAsText(f)
-	    }
-	}
 }
-document.getElementById('read_local_file').addEventListener('change', readSingleFile, false)
+//document.getElementById('read_local_file').addEventListener('change', readSingleFile, false)
 </script>
 
 <div id="gserrors" style="font-family:Verdana;font-size:13px;color:#c00">
